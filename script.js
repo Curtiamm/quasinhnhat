@@ -203,9 +203,9 @@ btnCharge.addEventListener('click', () => {
     // Tạo góc xoay ngẫu nhiên cho ảnh
     const randomRotation = Math.floor(Math.random() * 21) - 10;
     
-    // Đổi chữ và ảnh NGAY LẬP TỨC
+    // Đổi chữ và ảnh NGAY LẬP TỨC (Thêm dấu ?v= để phá cache ảnh triệt để)
     energyMessageText.innerText = energyMessages[randomIndex];
-    energyPhoto.src = selectedPhoto;
+    energyPhoto.src = selectedPhoto + "?v=" + new Date().getTime();
     
     photoContainer.classList.remove('hidden');
     photoContainer.style.setProperty('--rotation', randomRotation);
