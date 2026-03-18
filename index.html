@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Món Quà Bí Mật 🎁</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font chữ đẹp từ Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- Thư viện bắn pháo hoa -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <!-- THẺ NGHE NHẠC (Sử dụng HTML5 Audio) -->
+    <!-- Bạn cần tải bài hát nhạc (ví dụ: noinaycoanh.mp3) vào cùng thư mục với file này -->
+    <audio id="bgMusic" src="noinaycoanh.mp3" preload="auto" loop></audio>
+
+    <!-- MÀN 1: KỂ CHUYỆN (STORY) -->
+    <div id="storyScreen" class="screen active">
+        <button id="btnStartStory" class="btn btn-pulse">Chạm vào đây để mở thế giới của anh 💖</button>
+        <div id="storyContent" class="hidden">
+            <p id="typewriterText"></p>
+        </div>
+        <button id="btnNextToConfess" class="btn btn-pulse hidden">Tiếp tục nào...</button>
+    </div>
+
+    <!-- MÀN 2: TỎ TÌNH TRỐN TÌM (CONFESSION) -->
+    <div id="confessionScreen" class="screen hidden">
+        <div class="glass-container">
+            <header>
+                <h1>Gửi cô bé bên Hàn...</h1>
+            </header>
+            
+            <div class="message-box">
+                <p id="confessionText">Em làm người yêu anh nhé? Chịu thì chịu không chịu thì thả tim! ❤️</p>
+            </div>
+
+            <div class="action-buttons">
+                <button id="btnYes" class="btn btn-yes">Cóooooo 💕</button>
+                <button id="btnNo" class="btn btn-no">Chê 🙄</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MÀN 3: TRẠM NĂNG LƯỢNG (ENERGY STATION) -->
+    <div id="energyScreen" class="screen hidden">
+        <div class="glass-container">
+            <header>
+                <h1>Trạm Năng Lượng Của Em 🔋</h1>
+            </header>
+            
+            <p class="subtitle">Bất cứ lúc nào mệt mỏi, hãy vào đây sạc pin nhé!</p>
+            
+            <div class="message-box">
+                <div class="photo-container hidden" id="photoContainer">
+                    <img id="energyPhoto" src="" alt="Ảnh kỷ niệm">
+                </div>
+                <p id="energyMessageText">Nạp đầy 100% tình yêu! Bấm nút bên dưới để nhận lời nhắn nha 👇</p>
+            </div>
+
+            <button id="btnCharge" class="btn btn-charge">
+                <span>Sạc Năng Lượng ⚡</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
