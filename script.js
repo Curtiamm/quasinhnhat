@@ -183,7 +183,7 @@ btnYes.addEventListener('click', () => {
 
 // === LUỒNG 3: TRẠM NĂNG LƯỢNG ===
 let lastMessageIndex = -1;
-let lastPhotoIndex = -1;
+let currentPhotoIndex = 0; // Thay đổi logic chọn ảnh sang theo thứ tự
 
 btnCharge.addEventListener('click', () => {
     let randomIndex;
@@ -193,14 +193,12 @@ btnCharge.addEventListener('click', () => {
 
     lastMessageIndex = randomIndex;
     
-    // Chọn ngẫu nhiên 1 ảnh (Đảm bảo không bị trùng ảnh cũ)
-    let randomPhotoIndex;
-    do {
-        randomPhotoIndex = Math.floor(Math.random() * energyPhotos.length);
-    } while (randomPhotoIndex === lastPhotoIndex && energyPhotos.length > 1);
+    // Chọn ảnh theo đúng thứ tự 1, 2, 3, 4, 5...
+    const selectedPhoto = energyPhotos[currentPhotoIndex];
     
-    lastPhotoIndex = randomPhotoIndex;
-    const selectedPhoto = energyPhotos[randomPhotoIndex];
+    // Tăng chỉ số index lên 1 để lần bấm sau ra ảnh tiếp theo.
+    // Nếu đã đến ảnh cuối cùng, quay lại ảnh số 1 (index 0)
+    currentPhotoIndex = (currentPhotoIndex + 1) % energyPhotos.length;
     
     // Tạo góc xoay ngẫu nhiên cho ảnh (từ -10 đến 10 độ) để trông giống Polaroid bị thả ngẫu nhiên
     const randomRotation = Math.floor(Math.random() * 21) - 10;
