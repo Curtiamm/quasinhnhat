@@ -200,37 +200,21 @@ btnCharge.addEventListener('click', () => {
     // Nếu đã đến ảnh cuối cùng, quay lại ảnh số 1 (index 0)
     currentPhotoIndex = (currentPhotoIndex + 1) % energyPhotos.length;
     
-    // Tạo góc xoay ngẫu nhiên cho ảnh (từ -10 đến 10 độ) để trông giống Polaroid bị thả ngẫu nhiên
+    // Tạo góc xoay ngẫu nhiên cho ảnh
     const randomRotation = Math.floor(Math.random() * 21) - 10;
     
-    // Hiệu ứng mờ đi
-    energyMessageText.style.opacity = 0;
-    energyMessageText.style.transform = 'scale(0.95)';
+    // Đổi chữ và ảnh NGAY LẬP TỨC
+    energyMessageText.innerText = energyMessages[randomIndex];
+    energyPhoto.src = selectedPhoto;
     
-    // Nếu ảnh đang hiện thì cũng mờ đi
-    if (!photoContainer.classList.contains('hidden')) {
-        photoContainer.style.opacity = 0;
-        photoContainer.style.transform = `scale(0.8) rotate(${randomRotation}deg)`;
-    }
+    photoContainer.classList.remove('hidden');
+    photoContainer.style.setProperty('--rotation', randomRotation);
     
+    // Reset animation if needed (để tạo cảm giác nảy nhẹ lên mỗi lần bấm)
+    photoContainer.style.transform = 'scale(0.95)';
     setTimeout(() => {
-        // Cập nhật text
-        energyMessageText.innerText = energyMessages[randomIndex];
-        energyMessageText.style.opacity = 1;
-        energyMessageText.style.transform = 'scale(1)';
-        
-        // Cập nhật và hiện ảnh
-        energyPhoto.src = selectedPhoto;
-        photoContainer.classList.remove('hidden');
-        photoContainer.style.setProperty('--rotation', randomRotation);
-        
-        // Mẹo: Cần một chút delay nhỏ để CSS transition nhận diện display:block trước khi đổi opacity
-        setTimeout(() => {
-            photoContainer.style.opacity = 1;
-            photoContainer.style.transform = `scale(1) rotate(${randomRotation}deg)`;
-        }, 50);
-        
-    }, 400); // Tăng thời gian chờ mờ xíu để ảnh load k bị gắt
+        photoContainer.style.transform = `scale(1) rotate(${randomRotation}deg)`;
+    }, 10); // Cực nhanh
 
     // Pháo hoa nhỏ nhỏ ăn mừng
     confetti({
